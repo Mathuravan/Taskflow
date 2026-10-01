@@ -10,12 +10,10 @@ class Settings(BaseSettings):
     api_v1_prefix: str = "/api/v1"
 
     database_url: str = (
-        "postgresql+psycopg://taskflow:taskflow@127.0.0.1:5433/taskflow"
+        "postgresql+psycopg://taskflow:taskflow@db:5432/taskflow"
     )
 
-    secret_key: str = (
-        "change-this-local-development-secret-before-deploying"
-    )
+    secret_key: str = "change-this-local-development-secret-before-deploying"
 
     algorithm: str = "HS256"
     access_token_expire_minutes: int = 480
@@ -40,7 +38,7 @@ class Settings(BaseSettings):
 
 @lru_cache
 def get_settings() -> Settings:
-    """Return cached application settings."""
+    """Return cached application settings.""" 
     return Settings()
 
 
